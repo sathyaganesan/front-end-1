@@ -20,6 +20,12 @@ setCredentials({
 const onSubmitHandler = (e) => {
 e.preventDefault()
 console.log('submitted!');
+// axios.post('', credentials)
+// .then((res) => {
+//   console.log(res);
+//   localStorage.setItem('token', res.data.payload)
+// })
+// .catch(err => console.log(err))
 }
 
   return (
