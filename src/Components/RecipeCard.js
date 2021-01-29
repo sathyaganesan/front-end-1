@@ -22,10 +22,10 @@ console.log('id:', id);
 
   return (
     <div>
-      <Card body outline color="secondary">
+      <Card body outline color='success' style={{backgroundColor: '#E6BD8F'}}>
         <CardTitle tag='h5'>{props.recipeName.name}</CardTitle>
        <Link key={id} to={`/Home/instructions/${id}`}>
-       <h4>See instructions</h4>
+       <h5>See instructions</h5>
        </Link>
       </Card>
     </div>

@@ -24,17 +24,12 @@ getRecipes()
 }, [])
 
   return (
-    <div 
-    // style={{  
-    //   backgroundImage: "url(" + "https://images.unsplash.com/photo-1609210885114-01fc2ba78fe0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=3711&q=80" + ")",
-    //   // backgroundPosition: 'center',
-    //   backgroundSize: 'cover',
-    //   // backgroundRepeat: 'no-repeat'
-    // }}
-    >
+    <Container style={{marginTop: '100px', width: '500px'}}>
+    <Row>
+      <Col>
       <h2>Your Recipes!</h2>
       {recipeNames.map((recipeName)=> 
-      <Container>
+      <Container style={{marginTop: '20px'}} >
  <Row>
         <Col>
         <RecipeCard recipeName={recipeName} />
@@ -44,8 +39,11 @@ getRecipes()
      
       
       )}
+      </Col>
+      </Row>
+      </Container>
       
-    </div>
+        
   );
 };
 

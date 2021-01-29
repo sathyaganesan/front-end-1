@@ -31,10 +31,10 @@ getInstructions(params.id)
   }, [params.id])
 
   return (
-    <Container>
-      <Row>
+    <Container style={{marginTop: '100px'}}>
+    <Row>
         <Col sm="12" md={{ size: 6, offset: 3 }}>
-      <Card body inverse color="info">
+      <Card body inverse style={{backgroundColor: '#C4804D'}}>
       <CardTitle tag="h5">Recipe name: {instructionData.name}</CardTitle>
         <CardText>Instructions: {instructionData.instruction}</CardText>
       </Card>
