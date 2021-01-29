@@ -11,6 +11,8 @@ import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 import NavBar from './NavBar'
 import {Route} from "react-router-dom";
+import RecipesHome from './RecipesHome'
+import InstructionsCard from './InstructionsCard'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, thunk)))
 
@@ -18,8 +20,12 @@ const App = () => {
   return (
     <Provider store={store}>
     <NavBar />
+    <Route exact path = "/Home" component = {RecipesHome} />
     <Route exact path = "/Signup" component = {SignUpForm}/>
     <Route exact path = "/Login" component = {LoginForm} />
+    <Route path="/Home/instructions/:id">
+      <InstructionsCard />
+    </Route>
     </Provider>
   )
 }

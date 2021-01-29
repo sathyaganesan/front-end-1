@@ -20,12 +20,12 @@ setCredentials({
 const onSubmitHandler = (e) => {
 e.preventDefault()
 console.log('submitted!');
-// axios.post('', credentials)
-// .then((res) => {
-//   console.log(res);
-//   localStorage.setItem('token', res.data.payload)
-// })
-// .catch(err => console.log(err))
+axios.post('https://buildweek-backend-familyrecipe.herokuapp.com/api/user/login', credentials)
+.then((res) => {
+  console.log('login res: ', res);
+  localStorage.setItem('token', '123')
+})
+.catch(err => console.log(err))
 }
 
   return (

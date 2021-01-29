@@ -29,7 +29,7 @@ const NavBar = (props) => {
               <NavLink href="/Login">Login</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">Recipes Page</NavLink>
+              <NavLink href="/Home">Recipes Page</NavLink>
             </NavItem>
             
           </Nav>

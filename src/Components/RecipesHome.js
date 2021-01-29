@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import RecipeCard from './RecipeCard'
 import { axiosWithAuth } from './axiosWithAuth'
+import axios from 'axios'
 
 const RecipesHome = () => {
 
 const [recipeNames, setRecipeNames] = useState([])
 
 const getRecipes = () => {
-axiosWithAuth()
-.get("")
-.then((res) => console.log('get data: ', res.data))
+axios
+.get("https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe")
+.then((res) => {
+  console.log('get res: ', res.data);
+  setRecipeNames(res.data)
+})
+
 .catch(err => console.log(err))
 }
 
