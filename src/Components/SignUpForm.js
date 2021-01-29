@@ -20,7 +20,7 @@ function SignUpForm (){
         .then((res) => {
           console.log('signup submit res: ', res)
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log('signup error: ',err))
     };
 
     return (
