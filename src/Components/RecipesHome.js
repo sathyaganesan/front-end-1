@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RecipeCard from './RecipeCard'
-import axiosWithAuth from './axiosWithAuth'
+import { axiosWithAuth } from './axiosWithAuth'
 
 const RecipesHome = () => {
 
