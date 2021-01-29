@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button, CardTitle, CardText } from 'reactstrap';
+import { Card, Button, CardTitle, CardText, Container, Row, Col } from 'reactstrap';
 import { useParams } from 'react-router-dom'
 import { axiosWithAuth } from './axiosWithAuth'
 
@@ -31,12 +31,16 @@ getInstructions(params.id)
   }, [params.id])
 
   return (
-    <div>
+    <Container>
+      <Row>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
       <Card body inverse color="info">
       <CardTitle tag="h5">Recipe name: {instructionData.name}</CardTitle>
         <CardText>Instructions: {instructionData.instruction}</CardText>
       </Card>
-    </div>
+      </Col>
+      </Row>
+    </Container>
   );
 };
 

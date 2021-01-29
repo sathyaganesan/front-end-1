@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Button, Form, Input} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col} from "reactstrap";
 import axios from 'axios'
 
 function SignUpForm (){
@@ -24,24 +24,24 @@ function SignUpForm (){
     };
 
     return (
-        <Form onSubmit = {formSubmit}>
-            <Input 
-            type = "text"
-            name  = "username"
-            placeholder = "UserName"
-            value = {signForm.username}
-            onChange = {inputChange}
-            />
-
-            <Input 
-            type = "password"
-            name = "password"
-            placeholder = "PassWord"
-            value = {signForm.password}
-            onChange = {inputChange}
-            />
-            <Button color = "primary">Submit</Button>
-        </Form>
+      <Container style={{marginTop: '100px', width: '500px'}}>
+      <Row>
+        <Col>
+        <h3>Please Signup</h3>
+        <Form onSubmit={formSubmit}>
+          <FormGroup>
+        <Label for="username">Username</Label>
+        <Input type="text" name="username" id="username" placeholder="enter your username" onChange={inputChange}/>
+      </FormGroup>
+      <FormGroup>
+        <Label for="examplePassword">Password</Label>
+        <Input type="password" name="password" id="examplePassword" placeholder="enter your password" onChange={inputChange}/>
+      </FormGroup>
+      <Button>Signup</Button>
+    </Form>
+        </Col>
+      </Row>
+    </Container>
     )
 }
 

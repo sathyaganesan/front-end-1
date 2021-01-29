@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 
 const LoginForm = () => {
@@ -29,7 +29,11 @@ axios.post('https://buildweek-backend-familyrecipe.herokuapp.com/api/user/login'
 }
 
   return (
-    <Form onSubmit={onSubmitHandler}>
+    <Container style={{marginTop: '100px', width: '500px'}}>
+      <Row>
+        <Col>
+        <h3>Login</h3>
+        <Form onSubmit={onSubmitHandler}>
           <FormGroup>
         <Label for="username">Username</Label>
         <Input type="text" name="username" id="username" placeholder="enter your username" onChange={onChangeHandler}/>
@@ -40,6 +44,10 @@ axios.post('https://buildweek-backend-familyrecipe.herokuapp.com/api/user/login'
       </FormGroup>
       <Button>Submit</Button>
     </Form>
+        </Col>
+      </Row>
+    </Container>
+    
   )
 }
 
