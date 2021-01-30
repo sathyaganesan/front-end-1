@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, CardTitle, CardText, Container, Row, Col } from 'reactstrap';
 import { useParams } from 'react-router-dom'
-import { axiosWithAuth } from './axiosWithAuth'
+// import { axiosWithAuth } from './axiosWithAuth'
+import axios from 'axios'
 
 const InstructionsCard = (props) => {
 console.log('instructions props: ', props);
@@ -17,10 +18,10 @@ const params = useParams()
 
   const getInstructions = (id) => {
     
-    axiosWithAuth()
+    axios
     .get(`https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe/${id}/instructions`)
     .then((res) => {
-// console.log('instr data: ', res.data[0]);
+console.log('instr data: ', res.data[0]);
       setInstructionData(res.data[0])
     })
     .catch(err => console.log(err))

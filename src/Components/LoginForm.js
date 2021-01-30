@@ -23,7 +23,7 @@ console.log('submitted!');
 axios.post('https://buildweek-backend-familyrecipe.herokuapp.com/api/user/login', credentials)
 .then((res) => {
   console.log('login res: ', res);
-  localStorage.setItem('token', '123')
+  localStorage.setItem('token', res.data.token)
 })
 .catch(err => console.log(err))
 }

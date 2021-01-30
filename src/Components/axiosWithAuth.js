@@ -3,7 +3,7 @@ import axios from "axios";
 export const axiosWithAuth = () => {
     const token = localStorage.getItem("token");
     return axios.create({
-        // baseUrl : "http://localhost:3000",
+        baseUrl : "https://buildweek-backend-familyrecipe.herokuapp.com/api/",
         headers : {
             Authorization : token
         }
