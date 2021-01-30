@@ -17,16 +17,19 @@ const NavBar = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar style={{backgroundColor: '#DF7F6F'}} light expand="md">
         <NavbarBrand href="/">Family Recipes</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Login</NavLink>
+          <NavItem>
+              <NavLink href="/Signup">Signup</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">Recipes Page</NavLink>
+              <NavLink href="/Login">Login</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/Home">Recipes Page</NavLink>
             </NavItem>
             
           </Nav>
