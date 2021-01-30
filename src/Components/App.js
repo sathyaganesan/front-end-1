@@ -14,6 +14,7 @@ import {Route} from "react-router-dom";
 import RecipesHome from './RecipesHome'
 import InstructionsCard from './InstructionsCard'
 import IngredientsCard from './IngredientsCard'
+import AddRecipeForm from './AddRecipeForm'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, thunk)))
 
@@ -29,6 +30,9 @@ const App = () => {
     </Route>
     <Route path="/Home/ingredients/:id">
       <IngredientsCard />
+    </Route>
+    <Route path="/Add">
+      <AddRecipeForm />
     </Route>
     </Provider>
   )
