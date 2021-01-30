@@ -14,7 +14,9 @@ const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
+  const logOut = () => { 
+    localStorage.setItem('token', "");
+  }
   return (
     <div>
       <Navbar style={{backgroundColor: '#DF7F6F'}} light expand="md">
@@ -34,7 +36,7 @@ const NavBar = (props) => {
             
           </Nav>
           
-              <NavLink href="#">Logout</NavLink>
+              <NavLink onClick={logOut} href="/Login">Logout</NavLink>
             
         </Collapse>
       </Navbar>
