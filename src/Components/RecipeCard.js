@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button, CardTitle, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import { axiosWithAuth } from './axiosWithAuth';
+import axios from 'axios'
 
 
 const RecipeCard = (props) => {
@@ -10,15 +11,12 @@ console.log('card props: ', props);
 const id = props.recipeName.id
 console.log('id:', id);
 
-// const getInstructions = () => {
-//   const id = props.recipeName.id
-//   axiosWithAuth()
-//   .get(`https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe/${id}/instructions`)
-//   .then((res) => {
-//     console.log('get details: ', res.data)
-//   })
-//   .catch(err => console.log(err))
-// }
+const deleteRecipe = () => {
+axios
+.delete(`https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe/${id}`)
+.then((res) => console.log('delete res: ', res))
+.catch(err => console.log('delete err: ', err))
+}
 
   return (
     <div>
@@ -27,6 +25,7 @@ console.log('id:', id);
        <Link key={id} to={`/Home/instructions/${id}`}>
        <h5>See instructions</h5>
        </Link>
+       <Button onClick={deleteRecipe}>Delete Recipe</Button>
       </Card>
     </div>
   );
