@@ -18,6 +18,15 @@ axiosWithAuth()
 .catch(err => console.log('delete err: ', err))
 }
 
+const editRecipe = () => {
+  axiosWithAuth()
+  .put(``, )
+  .then((res) => {
+    console.log('put res: ', res)
+  })
+  .catch(err => console.log('put err: ', err))
+}
+
   return (
     <div>
       <Card body outline color='success' style={{backgroundColor: '#E6BD8F'}}>
@@ -26,6 +35,7 @@ axiosWithAuth()
        <h5>See instructions</h5>
        </Link>
        <Button onClick={deleteRecipe}>Delete Recipe</Button>
+       <Button>Edit Recipe</Button>
       </Card>
     </div>
   );

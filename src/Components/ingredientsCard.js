@@ -30,7 +30,7 @@ const IngredientsCard = (props) => {
     axiosWithAuth()
       .get(`/api/ingredientslist/recipe/${params.id}/ingredients`)
       .then((res) => {
-        console.log('ingr res: ', res);
+        console.table('ingr res: ', res.data);
         setIngredientData(res.data)
       })
       .catch((err) => console.log(err));
