@@ -38,8 +38,8 @@ const NavBar = (props) => {
             </NavItem>
             
           </Nav>
-          
-              <NavLink onClick={logOut} href="/Login">Logout</NavLink>
+          {localStorage.getItem('token') &&  <NavLink onClick={logOut} href="/Login">Logout</NavLink>}
+              
             
         </Collapse>
       </Navbar>

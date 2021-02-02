@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 import { strictEqual } from 'assert';
+import { axiosWithAuth } from './axiosWithAuth';
 
 const AddRecipeForm = () => {
 const initialState = {
@@ -20,8 +21,8 @@ setNewRecipe({
 
 const onSubmitHandler = (e) => {
 e.preventDefault()
-axios
-.post('https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe', newRecipe)
+axiosWithAuth()
+.post('/api/recipes', newRecipe)
 .then((res) => console.log('add res: ', res))
 .catch(err => console.log('add err: ', err))
 }

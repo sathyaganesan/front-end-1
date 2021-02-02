@@ -9,14 +9,14 @@ const RecipesHome = () => {
 const [recipeNames, setRecipeNames] = useState([])
 
 const getRecipes = () => {
-axios
-.get("https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe")
+axiosWithAuth()
+.get("/api/recipes")
 .then((res) => {
   console.log('get res: ', res.data);
   setRecipeNames(res.data)
 })
 
-.catch(err => console.log(err))
+.catch(err => console.log('get err: ', err))
 }
 
 useEffect(() => {
