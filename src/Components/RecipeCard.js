@@ -12,7 +12,7 @@ const id = props.recipeName.id
 console.log('id:', id);
 
 const deleteRecipe = () => {
-axios
+axiosWithAuth()
 .delete(`https://buildweek-backend-familyrecipe.herokuapp.com/api/recipe/${id}`)
 .then((res) => console.log('delete res: ', res))
 .catch(err => console.log('delete err: ', err))
