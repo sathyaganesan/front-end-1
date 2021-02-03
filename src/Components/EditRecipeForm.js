@@ -16,8 +16,6 @@ const initialState = {
 }
   const [editedRecipe, setEditedRecipe] = useState(initialState)
 
-  const params = useParams()
-  console.log('edit params: ', params.id);
 
 const onChangeHandler = (e) => {
 setEditedRecipe({

@@ -38,7 +38,7 @@ const NavBar = (props) => {
             </NavItem>
             
           </Nav>
-          {localStorage.getItem('token') &&  <NavLink onClick={logOut} href="/Login">Logout</NavLink>}
+          {localStorage.getItem('token') &&  <NavLink onClick={logOut} href="/Login" style={{color: '#347382'}} >Logout</NavLink>}
               
             
         </Collapse>
