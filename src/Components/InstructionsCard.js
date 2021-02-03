@@ -9,7 +9,7 @@ console.log('instructions props: ', props);
 
 const [clicked, setClicked] = useState(false)
 
-const initialState = {
+const initialState ={
   id: null,
   name: '',
   instruction: ''
@@ -43,7 +43,7 @@ getInstructions(params.id)
       <CardTitle tag="h5">Recipe name: {instructionData.name}</CardTitle>
       {/* <Link key={params.id} to={`/Home/ingredients/${params.id}`}>Get ingredients!</Link> */}
         <CardText>Instructions: {instructionData.instruction}</CardText>
-        <Button onClick={() => {setClicked(!clicked)}}>Get ingredients!</Button>
+        <Button onClick={() => {setClicked(!clicked)}} style={{marginTop: '10px', width: '170px', backgroundColor: '#93A560'}}>Get ingredients!</Button>
 {clicked && <IngredientsCard />}
 
 

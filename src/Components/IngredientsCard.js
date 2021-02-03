@@ -46,10 +46,11 @@ const IngredientsCard = (props) => {
     //     <Col sm="12" md={{ size: 6, offset: 3 }}>
     //       <Card body inverse style={{ backgroundColor: "#C4804D" }}>
     //         <CardTitle tag="h5">Recipe name: </CardTitle>
-            <CardText><h5>Ingredients: 
+
+            <CardText><h5 style={{marginTop: '10px'}}>Ingredients: 
               </h5>
              
-              {ingredientData.map((ingredient) => <p>{ingredient.name}</p>)}
+              {ingredientData.map((ingredient) => <p key={ingredient.id}>{ingredient.name}</p>)}
               </CardText>
     //       </Card>
     //     </Col>

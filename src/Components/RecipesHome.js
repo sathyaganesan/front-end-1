@@ -29,7 +29,7 @@ getRecipes()
       <Col>
       <h2>Your Recipes!</h2>
       {recipeNames.map((recipeName)=> 
-      <Container style={{marginTop: '20px'}} >
+      <Container key={recipeName.id} style={{marginTop: '20px'}} >
  <Row>
         <Col>
         <RecipeCard recipeName={recipeName} />
