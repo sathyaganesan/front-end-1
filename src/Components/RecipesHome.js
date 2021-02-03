@@ -53,7 +53,7 @@ const RecipesHome = () => {
     setSearchValue('')
   };
 
- let filteredRecipes =  () => { return recipeNames.filter(recipe => recipe.name.toLowerCase().includes(searchValue))
+ let filteredRecipes =  () => { return recipeNames.filter(recipe => recipe.name.toLowerCase().includes(searchValue.toLowerCase()))
     }
 
 console.log('filtered: ', filteredRecipes());
