@@ -17,18 +17,18 @@ const id = props.recipeName.id
 const deleteRecipe = () => {
 axiosWithAuth()
 .delete(`/api/recipes/${id}`)
-.then((res) => console.log('delete res: ', res))
+.then((res) => props.setRefresh(!props.refresh))
 .catch(err => console.log('delete err: ', err))
 }
 
-const editRecipe = () => {
-  axiosWithAuth()
-  .put(``, )
-  .then((res) => {
-    console.log('put res: ', res)
-  })
-  .catch(err => console.log('put err: ', err))
-}
+// const editRecipe = () => {
+//   axiosWithAuth()
+//   .put(`/api/recipes/${id}`, )
+//   .then((res) => {
+//     props.setRefresh(!props.refresh)
+//   })
+//   .catch(err => console.log('put err: ', err))
+// }
 
   return (
     <div>
@@ -40,7 +40,7 @@ const editRecipe = () => {
        <Button style={{marginTop: '10px', width: '170px', backgroundColor: '#DE7F6E'}} onClick={deleteRecipe}>Delete Recipe</Button>
        
        <Button style={{marginTop: '10px', width: '170px', backgroundColor: '#93A586'}} onClick={() => {setClicked(!clicked)}}>Edit Recipe</Button>
-{clicked && <EditRecipeForm id={props.recipeName.id}/>}
+{clicked && <EditRecipeForm id={props.recipeName.id} refresh={props.refresh} setRefresh={props.setRefresh} clicked={clicked} setClicked={setClicked}/>}
       </Card>
     </div>
   );

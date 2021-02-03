@@ -26,6 +26,9 @@ const RecipesHome = () => {
 
   const [searchValue, setSearchValue] = useState('');
 
+  //state to allow page to refresh when state changes
+  const [refresh, setRefresh] = useState(false)
+
   const getRecipes = () => {
     axiosWithAuth()
       .get("/api/recipes")
@@ -39,7 +42,7 @@ const RecipesHome = () => {
 
   useEffect(() => {
     getRecipes();
-  }, []);
+  }, [refresh]);
 
   const handleSearchInput = (e) => {
     // console.log("search input: ", e.target.value);
@@ -93,7 +96,7 @@ console.log('filtered: ', filteredRecipes());
             <Container key={recipeName.id} style={{ marginTop: "20px" }}>
               <Row>
                 <Col>
-                  <RecipeCard recipeName={recipeName} />
+                  <RecipeCard recipeName={recipeName} refresh={refresh} setRefresh={setRefresh}/>
                 </Col>
               </Row>
             </Container>

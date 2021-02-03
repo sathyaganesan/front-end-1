@@ -28,7 +28,12 @@ const onSubmitHandler = (e) => {
 e.preventDefault()
 axiosWithAuth()
 .put(`/api/recipes/${id}`, editedRecipe)
-.then((res) => console.log('Edit res: ', res))
+.then((res) => {
+  props.setRefresh(!props.refresh)
+  props.setClicked(!props.clicked)
+}
+
+)
 .catch(err => console.log('Edit err: ', err))
 }
 
