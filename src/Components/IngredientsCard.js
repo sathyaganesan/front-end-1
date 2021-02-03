@@ -30,7 +30,7 @@ const IngredientsCard = (props) => {
     axiosWithAuth()
       .get(`/api/ingredientslist/recipe/${params.id}/ingredients`)
       .then((res) => {
-        console.table('ingr res: ', res.data);
+        console.log('ingr res: ', res);
         setIngredientData(res.data)
       })
       .catch((err) => console.log(err));
@@ -46,6 +46,7 @@ const IngredientsCard = (props) => {
     //     <Col sm="12" md={{ size: 6, offset: 3 }}>
     //       <Card body inverse style={{ backgroundColor: "#C4804D" }}>
     //         <CardTitle tag="h5">Recipe name: </CardTitle>
+
             <CardText><h5 style={{marginTop: '10px'}}>Ingredients: 
               </h5>
              
