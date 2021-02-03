@@ -7,12 +7,12 @@ import EditRecipeForm from './EditRecipeForm';
 
 
 const RecipeCard = (props) => {
-console.log('card props: ', props);
+// console.log('card props: ', props);
 
 const [clicked, setClicked] = useState(false)
 
 const id = props.recipeName.id
-console.log('id:', id);
+// console.log('id:', id);
 
 const deleteRecipe = () => {
 axiosWithAuth()
