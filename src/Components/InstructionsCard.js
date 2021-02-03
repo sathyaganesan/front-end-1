@@ -9,7 +9,7 @@ console.log('instructions props: ', props);
 
 const [clicked, setClicked] = useState(false)
 
-const initialState = {
+const initialState ={
   id: null,
   name: '',
   instruction: ''
