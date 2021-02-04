@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux'
 import { getRecipes } from '../Redux/Actions/getRecipesActions'
+import { searchRecipes } from '../Redux/Actions/searchRecipesActions'
 import RecipeCard from "./RecipeCard";
 import { axiosWithAuth } from "./axiosWithAuth";
 import axios from "axios";
@@ -21,7 +22,7 @@ import {
 
 const RecipesHome = (props) => {
 
-console.log('home props: ', props);
+// console.log('home props: ', props);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -61,12 +62,14 @@ console.log('home props: ', props);
   //   setSearchValue('')
   // };
 
-//  let filteredRecipes =  () => { return recipeNames.filter(recipe => recipe.name.toLowerCase().includes(searchValue.toLowerCase()))
-//     }
 
-// console.log('filtered: ', filteredRecipes());
 
-  
+ let filteredRecipes =  () => { return props.recipeNames.filter(recipe => recipe.name.toLowerCase().includes(searchValue.toLowerCase()))
+    }
+
+console.log('filtered: ', filteredRecipes());
+
+  const filtered = filteredRecipes()
 
   return (
     <Container style={{ marginTop: "100px", width: "500px" }}>
@@ -85,7 +88,11 @@ console.log('home props: ', props);
                 onChange={handleSearchInput}
               />
             </FormGroup>
-            {/* <Button onClick={onSearchSubmit}>Submit</Button> */}
+            <Button onClick={(e) => {
+              e.preventDefault()
+              props.searchRecipes(filtered)
+              setSearchValue('')
+              }}>Submit</Button>
           </Form>
           <br />
   
@@ -106,10 +113,10 @@ console.log('home props: ', props);
 };
 
 const mapStateToProps = state => {
-  console.log('Home state: ', state)
+  // console.log('Home state: ', state)
   return {
     recipeNames: state.get.recipes
 }}
 
 
-export default connect(mapStateToProps, {getRecipes})(RecipesHome);
+export default connect(mapStateToProps, {getRecipes, searchRecipes})(RecipesHome);

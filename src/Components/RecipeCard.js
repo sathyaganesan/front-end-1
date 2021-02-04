@@ -53,8 +53,8 @@ const id = props.recipeName.id
   );
 };
 
-const mapStateToProps = state => {
-  console.log('card state: ', state);
-}
+// const mapStateToProps = state => {
+//   console.log('card state: ', state);
+// }
 
-export default connect(mapStateToProps, {deleteRecipe})(RecipeCard);
+export default connect(null, {deleteRecipe})(RecipeCard);
