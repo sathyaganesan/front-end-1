@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { connect } from 'react-redux'
+import { getRecipes } from '../Redux/Actions/getRecipesActions'
+import { searchRecipes } from '../Redux/Actions/searchRecipesActions'
 import RecipeCard from "./RecipeCard";
 import { axiosWithAuth } from "./axiosWithAuth";
 import axios from "axios";
@@ -17,48 +20,56 @@ import {
   Input,
 } from "reactstrap";
 
-const RecipesHome = () => {
+const RecipesHome = (props) => {
+
+// console.log('home props: ', props);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-  const [recipeNames, setRecipeNames] = useState([]);
+  // const [recipeNames, setRecipeNames] = useState([]);
 
   const [searchValue, setSearchValue] = useState('');
 
-  const getRecipes = () => {
-    axiosWithAuth()
-      .get("/api/recipes")
-      .then((res) => {
-        console.log("get res: ", res.data);
-        setRecipeNames(res.data);
-      })
+  //state to allow page to refresh when state changes
+  const [refresh, setRefresh] = useState(false)
 
-      .catch((err) => console.log("get err: ", err));
-  };
+  // const getRecipes = () => {
+  //   axiosWithAuth()
+  //     .get("/api/recipes")
+  //     .then((res) => {
+  //       console.log("get res: ", res.data);
+  //       setRecipeNames(res.data);
+  //     })
+
+  //     .catch((err) => console.log("get err: ", err));
+  // };
 
   useEffect(() => {
-    getRecipes();
-  }, []);
+    props.getRecipes();
+  }, [refresh]);
 
   const handleSearchInput = (e) => {
     // console.log("search input: ", e.target.value);
     setSearchValue(e.target.value)
   };
 
-  const onSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit search");
-    setRecipeNames(filteredRecipes())
-    setSearchValue('')
-  };
+  // const onSearchSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("submit search");
+  //   setRecipeNames(filteredRecipes())
+  //   setSearchValue('')
+  // };
 
- let filteredRecipes =  () => { return recipeNames.filter(recipe => recipe.name.toLowerCase().includes(searchValue.toLowerCase()))
+
+
+ let filteredRecipes =  () => { return props.recipeNames.filter(recipe => recipe.name.toLowerCase().includes(searchValue.toLowerCase()))
     }
 
 console.log('filtered: ', filteredRecipes());
 
-  
+  const filtered = filteredRecipes()
 
   return (
     <Container style={{ marginTop: "100px", width: "500px" }}>
@@ -77,23 +88,20 @@ console.log('filtered: ', filteredRecipes());
                 onChange={handleSearchInput}
               />
             </FormGroup>
-            <Button onClick={onSearchSubmit}>Submit</Button>
+            <Button onClick={(e) => {
+              e.preventDefault()
+              props.searchRecipes(filtered)
+              setSearchValue('')
+              }}>Submit</Button>
           </Form>
           <br />
-          {/* <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle caret>Select by meal</DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem>Breakfast</DropdownItem>
-              <DropdownItem>Lunch</DropdownItem>
-              <DropdownItem>Dinner</DropdownItem>
-            </DropdownMenu>
-          </Dropdown> */}
+  
 
-          {recipeNames.map((recipeName) => (
+          {props.recipeNames.map((recipeName) => (
             <Container key={recipeName.id} style={{ marginTop: "20px" }}>
               <Row>
                 <Col>
-                  <RecipeCard recipeName={recipeName} />
+                  <RecipeCard recipeName={recipeName} refresh={refresh} setRefresh={setRefresh}/>
                 </Col>
               </Row>
             </Container>
@@ -104,4 +112,11 @@ console.log('filtered: ', filteredRecipes());
   );
 };
 
-export default RecipesHome;
+const mapStateToProps = state => {
+  // console.log('Home state: ', state)
+  return {
+    recipeNames: state.get.recipes
+}}
+
+
+export default connect(mapStateToProps, {getRecipes, searchRecipes})(RecipesHome);

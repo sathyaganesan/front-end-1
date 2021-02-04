@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col} from "reactstrap";
 import axios from 'axios'
 
-function SignUpForm (){
+function SignUpForm (props){
     const [signForm, setSignForm] = useState({
         username : "",
         password : ""
@@ -18,7 +18,7 @@ function SignUpForm (){
         axios
         .post('https://buildweek-backend-familyrecipe.herokuapp.com/api/user/signup', signForm)
         .then((res) => {
-          console.log('signup submit res: ', res)
+          props.history.push('/Home')
         })
         .catch(err => console.log('signup error: ',err))
     };

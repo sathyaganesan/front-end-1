@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { editRecipe } from '../Redux/Actions/editRecipeActions'
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
@@ -24,20 +26,25 @@ setEditedRecipe({
 })
 }
 
-const onSubmitHandler = (e) => {
-e.preventDefault()
-axiosWithAuth()
-.put(`/api/recipes/${id}`, editedRecipe)
-.then((res) => console.log('Edit res: ', res))
-.catch(err => console.log('Edit err: ', err))
-}
+// const onSubmitHandler = (e) => {
+// e.preventDefault()
+// axiosWithAuth()
+// .put(`/api/recipes/${id}`, editedRecipe)
+// .then((res) => {
+//   props.setRefresh(!props.refresh)
+//   props.setClicked(!props.clicked)
+// }
+
+// )
+// .catch(err => console.log('Edit err: ', err))
+// }
 
   return (
     <Container style={{marginTop: '10px', width: '400px'}}>
     <Row>
       <Col>
       <h3>Edit recipe</h3>
-      <Form onSubmit={onSubmitHandler}>
+      <Form onSubmit={props.editRecipe(id, editedRecipe)}>
         <FormGroup>
       <Label for="name">Name:</Label>
       <Input type="text" name="name" id="username" placeholder="enter recipe name" onChange={onChangeHandler}/>
@@ -58,4 +65,6 @@ axiosWithAuth()
   );
 };
 
-export default EditRecipeForm;
+
+
+export default connect(null, {editRecipe})(EditRecipeForm);
