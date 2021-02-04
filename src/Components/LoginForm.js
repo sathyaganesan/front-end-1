@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
 
   const [credentials, setCredentials] = useState({
     username: '',
@@ -24,6 +24,7 @@ axios.post('https://buildweek-backend-familyrecipe.herokuapp.com/api/user/login'
 .then((res) => {
   console.log('login res: ', res);
   localStorage.setItem('token', res.data.token)
+  props.history.push('/Home')
 })
 .catch(err => console.log(err))
 }

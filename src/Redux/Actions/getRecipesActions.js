@@ -24,16 +24,18 @@ export const getRecipesFailure = (error) => {
   }
 }
 
-export const getRecipes = () =>
-{
-  dispatchEvent(getRecipesRequest())
+export const getRecipes = () =>{
+return function (dispatch) {
+  dispatch(getRecipesRequest())
   axiosWithAuth()
-  .get("")
+  .get("/api/recipes")
   .then((res) => {
     console.log('get data: ', res.data);
-    dispatchEvent(getRecipesSuccess())
+    const recipes = res.data
+    dispatch(getRecipesSuccess(recipes))
   })
   .catch(err => {
-    dispatchEvent(getRecipesFailure())
+    dispatch(getRecipesFailure(err.message))
   })
-}
+}}
+
