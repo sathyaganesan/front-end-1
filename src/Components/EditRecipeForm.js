@@ -8,7 +8,7 @@ import { strictEqual } from 'assert';
 import { axiosWithAuth } from './axiosWithAuth';
 
 const EditRecipeForm = (props) => {
-  // console.log('edit props: ', props);
+  console.log('edit props: ', props);
 const id = props.id
 
 const initialState = {
