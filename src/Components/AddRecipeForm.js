@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 import { strictEqual } from 'assert';
 import { axiosWithAuth } from './axiosWithAuth';
 
 const AddRecipeForm = (props) => {
+
+let history = useHistory()
+
 const initialState = {
   category: '',
   name: '',
@@ -25,7 +29,7 @@ axiosWithAuth()
 .post('/api/recipes', newRecipe)
 .then((res) => {
   console.log('add res: ', res.data);
-  props.history.push('/Home')
+  history.push('/Home')
 })
 .catch(err => console.log('add err: ', err))
 }
