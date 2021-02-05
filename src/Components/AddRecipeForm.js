@@ -4,7 +4,7 @@ import axios from 'axios'
 import { strictEqual } from 'assert';
 import { axiosWithAuth } from './axiosWithAuth';
 
-const AddRecipeForm = () => {
+const AddRecipeForm = (props) => {
 const initialState = {
   category: '',
   name: '',
@@ -23,7 +23,10 @@ const onSubmitHandler = (e) => {
 e.preventDefault()
 axiosWithAuth()
 .post('/api/recipes', newRecipe)
-.then((res) => console.log('add res: ', res))
+.then((res) => {
+  console.log('add res: ', res.data);
+  props.history.push('/Home')
+})
 .catch(err => console.log('add err: ', err))
 }
 

@@ -35,6 +35,9 @@ const RecipesHome = (props) => {
   //state to allow page to refresh when state changes
   const [refresh, setRefresh] = useState(false)
 
+  //state for true or false filtered data
+  const [searchSubmit, setSearchSubmit] = useState(false)
+
   // const getRecipes = () => {
   //   axiosWithAuth()
   //     .get("/api/recipes")
@@ -92,20 +95,34 @@ console.log('filtered: ', filteredRecipes());
               e.preventDefault()
               props.searchRecipes(filtered)
               setSearchValue('')
+              setSearchSubmit(!searchSubmit)
               }}>Submit</Button>
           </Form>
           <br />
-  
+  {!searchSubmit ?
+ (props.recipeNames.map((recipeName) => (
+  <Container key={recipeName.id} style={{ marginTop: "20px" }}>
+    <Row>
+      <Col>
+        <RecipeCard recipeName={recipeName} refresh={refresh} setRefresh={setRefresh}/>
+      </Col>
+    </Row>
+  </Container>
+)))
+:
+(props.filteredRecipeNames.map((recipeName) => (
+  <Container key={recipeName.id} style={{ marginTop: "20px" }}>
+    <Row>
+      <Col>
+        <RecipeCard recipeName={recipeName} refresh={refresh} setRefresh={setRefresh}/>
+      </Col>
+    </Row>
+  </Container>
+)))
+  }
 
-          {props.recipeNames.map((recipeName) => (
-            <Container key={recipeName.id} style={{ marginTop: "20px" }}>
-              <Row>
-                <Col>
-                  <RecipeCard recipeName={recipeName} refresh={refresh} setRefresh={setRefresh}/>
-                </Col>
-              </Row>
-            </Container>
-          ))}
+         
+
         </Col>
       </Row>
     </Container>
@@ -113,9 +130,10 @@ console.log('filtered: ', filteredRecipes());
 };
 
 const mapStateToProps = state => {
-  // console.log('Home state: ', state)
+  console.log('Home state: ', state)
   return {
-    recipeNames: state.get.recipes
+    recipeNames: state.get.recipes,
+    filteredRecipeNames: state.search.recipes
 }}
 
 
