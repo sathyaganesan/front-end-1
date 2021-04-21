@@ -7,7 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-
 } from 'reactstrap';
 
 const NavBar = (props) => {
@@ -24,7 +23,7 @@ const NavBar = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-          <NavItem>
+            <NavItem>
               <NavLink href="/Signup">Signup</NavLink>
             </NavItem>
             <NavItem>
@@ -36,11 +35,8 @@ const NavBar = (props) => {
             <NavItem>
               <NavLink href="/Add">Add Recipe</NavLink>
             </NavItem>
-            
           </Nav>
           {localStorage.getItem('token') &&  <NavLink onClick={logOut} href="/Login" style={{color: '#347382'}} >Logout</NavLink>}
-              
-            
         </Collapse>
       </Navbar>
     </div>

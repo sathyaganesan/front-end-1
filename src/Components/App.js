@@ -22,18 +22,18 @@ const App = () => {
   return (
     <Provider store={store}>
     <NavBar />
-    <Route exact path = "/Home" component = {RecipesHome} />
-    <Route exact path = "/Signup" component = {SignUpForm}/>
-    <Route exact path = "/Login" component = {LoginForm} />
-    <Route path="/Home/instructions/:id">
-      <InstructionsCard />
-    </Route>
-    <Route path="/Home/ingredients/:id">
-      <IngredientsCard />
-    </Route>
-    <Route path="/Add">
-      <AddRecipeForm />
-    </Route>
+      <Route exact path = "/Home" component = {RecipesHome} />
+      <Route exact path = "/Signup" component = {SignUpForm}/>
+      <Route exact path = "/Login" component = {LoginForm} />
+      <Route path="/Home/instructions/:id">
+        <InstructionsCard />
+      </Route>
+      <Route path="/Home/ingredients/:id">
+        <IngredientsCard />
+      </Route>
+      <Route path="/Add">
+        <AddRecipeForm />
+      </Route>
     </Provider>
   )
 }
