@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Button,
-  CardTitle,
-  CardText,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-import { useParams, Link } from "react-router-dom";
+import {CardText} from "reactstrap";
+import { useParams } from "react-router-dom";
 import { axiosWithAuth } from "./axiosWithAuth";
 // import axios from 'axios'
 
@@ -18,9 +10,8 @@ const IngredientsCard = (props) => {
   const initialState = [{
     name: '',
     quantity: ''
-  }
+  }];
 
-    ];
   const [ingredientData, setIngredientData] = useState(initialState);
 
   const params = useParams();
@@ -37,25 +28,13 @@ const IngredientsCard = (props) => {
   };
 
   useEffect(() => {
-    getIngredients(params.id);
-  }, [params.id]);
+    getIngredients(params.id);}, [params.id]);
 
   return (
-    // <Container style={{ marginTop: "100px" }}>
-    //   <Row>
-    //     <Col sm="12" md={{ size: 6, offset: 3 }}>
-    //       <Card body inverse style={{ backgroundColor: "#C4804D" }}>
-    //         <CardTitle tag="h5">Recipe name: </CardTitle>
-
-            <CardText><h5 style={{marginTop: '10px'}}>Ingredients: 
-              </h5>
-             
-              {ingredientData.map((ingredient) => <p key={ingredient.id}>{ingredient.name}</p>)}
-              </CardText>
-    //       </Card>
-    //     </Col>
-    //   </Row>
-    // </Container>
+    <CardText><h5 style={{marginTop: '10px'}}>Ingredients: 
+      </h5>
+      {ingredientData.map((ingredient) => <p key={ingredient.id}>{ingredient.name}</p>)}
+    </CardText>
   );
 };
 
